@@ -67,7 +67,7 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
+    <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-生成一个签名密钥"><span class="toc-text">1. 生成一个签名密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#项目下执行命令-keytool-genkey-v-keystore-my-release-key-keystore-alias-my-key-alias-keyalg-RSA-keysize-2048-validity-10000"><span class="toc-text">项目下执行命令: keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#会生成一个叫做my-release-key-keystore的密钥库文件"><span class="toc-text">会生成一个叫做my-release-key.keystore的密钥库文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-找到路径-android-app-src-main，并在该目录下新建assets文件夹"><span class="toc-text">2. 找到路径/android/app/src/main，并在该目录下新建assets文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在当前项目目录下执行命令-curl-k-“http-localhost-8081-index-android-bundle“-gt-android-app-src-main-assets-index-android-bundle"><span class="toc-text">3. 在当前项目目录下执行命令:  curl -k “http://localhost:8081/index.android.bundle“ > android/app/src/main/assets/index.android.bundle</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#此命令需安装curl-exe-把curl-exe放在当前项目的目录下"><span class="toc-text">此命令需安装curl.exe, 把curl.exe放在当前项目的目录下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-配置原生方面-AS打开-在build-gradle文件中"><span class="toc-text">4. 配置原生方面(AS打开) 在build.gradle文件中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加-注-打包的apk在未签名的情况下-在手机中-非root-是不允许安装的"><span class="toc-text">添加(注:打包的apk在未签名的情况下,在手机中(非root)是不允许安装的)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-在Android目录下执行命令-gradle-assembleRelease"><span class="toc-text">5. 在Android目录下执行命令: gradle assembleRelease</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#打包后的文件在-android-app-build-outputs-apk目录中-app-release-apk"><span class="toc-text">打包后的文件在 android/app/build/outputs/apk目录中(app-release.apk)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#此命令需安装gradle，如果打包碰到问题可以先执行-gradle-clean-清理一下。安装gradle工具（版本与android-gradle-wrapper下的一致），并配置环境变量，配置GRADLE-HOME到你的gradle根目录当中，然后把-GRADLE-HOME-bin（linux或mac的是-GRADLE-HOME-bin）加到PATH的环境变量。配置完成之后，运行gradle-v，检查一下是否安装无误"><span class="toc-text">此命令需安装gradle，如果打包碰到问题可以先执行 gradle clean 清理一下。安装gradle工具（版本与android\gradle\wrapper下的一致），并配置环境变量，配置GRADLE_HOME到你的gradle根目录当中，然后把%GRADLE_HOME%/bin（linux或mac的是$GRADLE_HOME/bin）加到PATH的环境变量。配置完成之后，运行gradle -v，检查一下是否安装无误</span></a></li></ol></li></ol>
   </div>
 
@@ -145,7 +145,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
+      <span id="close" class="btn-close">关闭</span>
     </div>
     <hr>
     <div class="modal-body">
