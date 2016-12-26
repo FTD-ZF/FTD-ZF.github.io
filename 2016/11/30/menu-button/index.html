@@ -21,10 +21,12 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/menu-button/index.html">
 <meta property="og:site_name" content="FTD-ZF">
 <meta property="og:description" content="1. 添加依赖当前目录下执行 npm install react-native-menu-button ——save2.导包import MenuButton from ‘react-native-menu-button’3.使用①在渲染界面时声明一个数组(当前这个button中的内容)1234567例如menuGroup= [     &amp;#123;key:&amp;quot;0&amp;quot;,value:">
-<meta property="og:updated_time" content="2016-11-30T07:49:50.218Z">
+<meta property="og:image" content="http://yoursite.com/img/imgmenubutton.jpg">
+<meta property="og:updated_time" content="2016-12-26T09:27:27.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native顶部菜单栏展开功能(类似于微信)">
 <meta name="twitter:description" content="1. 添加依赖当前目录下执行 npm install react-native-menu-button ——save2.导包import MenuButton from ‘react-native-menu-button’3.使用①在渲染界面时声明一个数组(当前这个button中的内容)1234567例如menuGroup= [     &amp;#123;key:&amp;quot;0&amp;quot;,value:">
+<meta name="twitter:image" content="http://yoursite.com/img/imgmenubutton.jpg">
 
   
 
@@ -68,7 +70,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-添加依赖"><span class="toc-text">1. 添加依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#当前目录下执行-npm-install-react-native-menu-button-——save"><span class="toc-text">当前目录下执行 npm install react-native-menu-button ——save</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-导包"><span class="toc-text">2.导包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#import-MenuButton-from-‘react-native-menu-button’"><span class="toc-text">import MenuButton from ‘react-native-menu-button’</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用"><span class="toc-text">3.使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#①在渲染界面时声明一个数组-当前这个button中的内容"><span class="toc-text">①在渲染界面时声明一个数组(当前这个button中的内容)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#②在控件中调用"><span class="toc-text">②在控件中调用</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-添加依赖"><span class="toc-text">1. 添加依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#当前目录下执行-npm-install-react-native-menu-button-——save"><span class="toc-text">当前目录下执行 npm install react-native-menu-button ——save</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-导包"><span class="toc-text">2.导包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#import-MenuButton-from-‘react-native-menu-button’"><span class="toc-text">import MenuButton from ‘react-native-menu-button’</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用"><span class="toc-text">3.使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#①在渲染界面时声明一个数组-当前这个button中的内容"><span class="toc-text">①在渲染界面时声明一个数组(当前这个button中的内容)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#②在控件中调用"><span class="toc-text">②在控件中调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-效果图"><span class="toc-text">4.效果图</span></a></li></ol>
   </div>
 
 
@@ -108,6 +110,7 @@
     
       <h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h3><h5 id="当前目录下执行-npm-install-react-native-menu-button-——save"><a href="#当前目录下执行-npm-install-react-native-menu-button-——save" class="headerlink" title="当前目录下执行 npm install react-native-menu-button ——save"></a>当前目录下执行 npm install react-native-menu-button ——save</h5><h3 id="2-导包"><a href="#2-导包" class="headerlink" title="2.导包"></a>2.导包</h3><h5 id="import-MenuButton-from-‘react-native-menu-button’"><a href="#import-MenuButton-from-‘react-native-menu-button’" class="headerlink" title="import MenuButton from ‘react-native-menu-button’"></a>import MenuButton from ‘react-native-menu-button’</h5><h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><h5 id="①在渲染界面时声明一个数组-当前这个button中的内容"><a href="#①在渲染界面时声明一个数组-当前这个button中的内容" class="headerlink" title="①在渲染界面时声明一个数组(当前这个button中的内容)"></a>①在渲染界面时声明一个数组(当前这个button中的内容)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">例如</div><div class="line">menuGroup= [</div><div class="line">     &#123;key:&quot;0&quot;,value:&quot;菜单1&quot;,text:&quot;菜单1&quot;&#125;,</div><div class="line">     &#123;key:&quot;1&quot;,value:&quot;菜单2&quot;,text:&quot;菜单2&quot;&#125;,</div><div class="line">     &#123;key:&quot;2&quot;,value:&quot;菜单3&quot;,text:&quot;菜单3&quot;&#125;,</div><div class="line">     &#123;key:&quot;3&quot;,value:&quot;菜单4&quot;,text:&quot;菜单4&quot;&#125;,</div><div class="line">   ]</div></pre></td></tr></table></figure>
 <h5 id="②在控件中调用"><a href="#②在控件中调用" class="headerlink" title="②在控件中调用"></a>②在控件中调用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;MenuButton  </div><div class="line"> menuGroup=&#123;menuGroup&#125;  //一些style可以自行添加</div><div class="line"> /&gt;</div></pre></td></tr></table></figure>
+<h3 id="4-效果图"><a href="#4-效果图" class="headerlink" title="4.效果图"></a>4.效果图</h3><p><img src="/img/imgmenubutton.jpg" alt="alt text"></p>
 
     
   </div>
@@ -150,7 +153,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
