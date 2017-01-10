@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>react-native控件属性抽取 | FTD-ZF</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+  
+
+  <meta name="description" content="1.创建一个控件页面1234567891011121314render()&amp;#123;    return(    &amp;lt;View style=&amp;#123;....&amp;#125;&amp;gt;      &amp;lt;Text style=&amp;#123;...&amp;#125;&amp;gt;&amp;#123;this.props.titlename&amp;#125;&amp;lt;/Text&amp;gt;      &amp;lt;TextInput">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native控件属性抽取">
+<meta property="og:url" content="http://yoursite.com/2017/01/10/widgets/index.html">
+<meta property="og:site_name" content="FTD-ZF">
+<meta property="og:description" content="1.创建一个控件页面1234567891011121314render()&amp;#123;    return(    &amp;lt;View style=&amp;#123;....&amp;#125;&amp;gt;      &amp;lt;Text style=&amp;#123;...&amp;#125;&amp;gt;&amp;#123;this.props.titlename&amp;#125;&amp;lt;/Text&amp;gt;      &amp;lt;TextInput">
+<meta property="og:updated_time" content="2017-01-10T09:40:19.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native控件属性抽取">
+<meta name="twitter:description" content="1.创建一个控件页面1234567891011121314render()&amp;#123;    return(    &amp;lt;View style=&amp;#123;....&amp;#125;&amp;gt;      &amp;lt;Text style=&amp;#123;...&amp;#125;&amp;gt;&amp;#123;this.props.titlename&amp;#125;&amp;lt;/Text&amp;gt;      &amp;lt;TextInput">
+
+  
+
+  
+    <link rel="icon" href="/images/icon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+
+  <div class="post-header">
+   
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建一个控件页面"><span class="toc-text">1.创建一个控件页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-主页面调用此控件"><span class="toc-text">2.主页面调用此控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-关键点"><span class="toc-text">3.关键点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主要是这个props的使用-来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。-可以在控件中把独有的属性提出，然后按需求使用"><span class="toc-text">主要是这个props的使用,来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。(可以在控件中把独有的属性提出，然后按需求使用)</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-widgets" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">react-native控件属性抽取</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.01.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>FTD-ZF</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://FTD-ZF.github.io//2017/01/10/widgets/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="1-创建一个控件页面"><a href="#1-创建一个控件页面" class="headerlink" title="1.创建一个控件页面"></a>1.创建一个控件页面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">render()&#123;</div><div class="line"></div><div class="line">    return(</div><div class="line">    &lt;View style=&#123;....&#125;&gt;</div><div class="line">      &lt;Text style=&#123;...&#125;&gt;&#123;this.props.titlename&#125;&lt;/Text&gt;</div><div class="line">      &lt;TextInput</div><div class="line">                    style = &#123;.....&#125;</div><div class="line">              placeholder = &#123;this.props.hidetextname&#125;</div><div class="line">             onChangeText = &#123;(text)=&gt;&#123;this.props.onChangeText(text)&#125;&#125;</div><div class="line">             defaultValue = &#123;this.state.changename&#125;</div><div class="line">      /&gt;</div><div class="line">    &lt;/View&gt;</div><div class="line">  )</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="2-主页面调用此控件"><a href="#2-主页面调用此控件" class="headerlink" title="2.主页面调用此控件"></a>2.主页面调用此控件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">import TextItem from &apos;./TextItem&apos;</div><div class="line">...</div><div class="line">class InspectView extends React.Component &#123;</div><div class="line"></div><div class="line">constructor(props) &#123;</div><div class="line">super(props);</div><div class="line">this.state = &#123;</div><div class="line">testname:&apos; &apos;,</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">sub()&#123;</div><div class="line">alert(this.state.testname);</div><div class="line">&#125;</div><div class="line"></div><div class="line">render() &#123;</div><div class="line"></div><div class="line">    return (</div><div class="line">&lt;TextItem titlename=&apos;nihao&apos; hidetextname=&apos;ceshiaaaa&apos; changename=&#123;this.state.testname&#125;  onChangeText=&#123;(text)=&gt;this.setState(&#123;testname:text&#125;)&#125;/&gt;</div><div class="line">&lt;TouchableOpacity onPress=&#123;() =&gt; this.popView()&#125; style=&#123;.....&#125;&gt;</div><div class="line">                &lt;Text onPress=&#123;()=&gt;sub()&#125;&gt;提交&lt;/Text&gt;</div><div class="line">&lt;/TouchableOpacity&gt;</div><div class="line"></div><div class="line"> )</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-关键点"><a href="#3-关键点" class="headerlink" title="3.关键点"></a>3.关键点</h3><h5 id="主要是这个props的使用-来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。-可以在控件中把独有的属性提出，然后按需求使用"><a href="#主要是这个props的使用-来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。-可以在控件中把独有的属性提出，然后按需求使用" class="headerlink" title="主要是这个props的使用,来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。(可以在控件中把独有的属性提出，然后按需求使用)"></a>主要是这个props的使用,来传递给控件值；其次控件的属性也是这样，就比如这个TextInput中的onChangeText属性就是直接通过这个props传到TextItem中使用的。(可以在控件中把独有的属性提出，然后按需求使用)</h5>
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持FTD-ZF</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/wxpay.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'FTD-ZF';
+    
+    var disqus_url = 'http://yoursite.com/2017/01/10/widgets/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//FTD-ZF.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
